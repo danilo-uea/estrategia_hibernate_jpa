@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+    <persistence-unit name="estrategia">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+<!--        <class>modelo.Aluno</class>-->
+<!--        <class>modelo.Professor</class>-->
+<!--        <class>modelo.Curso</class>-->
+        <!-- Exclui todas as classes que não foram listadas acima -->
+<!--        <exclude-unlisted-classes>true</exclude-unlisted-classes>-->
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/alunos"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgres"/>
+            <!-- Controla a estratégia de geração de esquema (schema) do banco de dados quando a aplicação é iniciada -->
+            <!-- <property name="javax.persistence.schema-generation.database.action" value="update"/> -->
+            <!-- value="update" -> Atualiza o esquema do banco de dados para corresponder às mudanças no mapeamento das entidades sem apagar dados ou tabelas -->
+            <!-- value="create" -> Cria o DB do zero sempre que a aplicação inicia -->
+            <!-- value="drop-and-create" -> Igual ao create, mas ele apaga o DB depois que a aplicação é desligada (Shutdown) -->
+            <!-- value="validate" -> Verifica se o modelo da aplicação está igual ao modelo relacional do DB -->
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <!-- Outra forma de gerar as tabelas do banco de dados -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
